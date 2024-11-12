@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/LooseChange.iml" filepath="$PROJECT_DIR$/.idea/LooseChange.iml" />
+      <module fileurl="file://$PROJECT_DIR$/loosechange/loosechange.iml" filepath="$PROJECT_DIR$/loosechange/loosechange.iml" />
+      <module fileurl="file://$PROJECT_DIR$/source/source.iml" filepath="$PROJECT_DIR$/source/source.iml" />
+    </modules>
+  </component>
+</project>
