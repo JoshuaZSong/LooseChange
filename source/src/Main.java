@@ -28,7 +28,7 @@ public class Main {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
         //4.Expense
-        String name = "";
+        String note = "";
 
 
         do{
@@ -54,18 +54,18 @@ public class Main {
                     balance += money;
                     //put the balance to details
                     date = new Date();
-                    details +="\nIncome\t" + money + "\t" + sdf.format(date) + "\t" + balance;
+                    details +="\nIncome\t" + money + "\t+" + sdf.format(date) + "\t" + balance;
 
                     break;
                 case "3" :
-                    System.out.println("lease enter expense's name:");
-                    name = scanner.next();
+                    System.out.println("lease enter expense's note:");
+                    note = scanner.next();
                     System.out.println("lease enter expense's number:");
                     money = scanner.nextDouble();
                     if (money <= balance){
                         balance -= money;
                         date = new Date();
-                        details +="\n" + name + ":\t" + money + "\t" + sdf.format(date) + "\t" + balance;
+                        details +="\n" + note + ":\t-" + money + "\t" + sdf.format(date) + "\t" + balance;
                     }else{
                         System.out.println("Out of balance, you can not make this deal");
                         System.out.println("lease enter expense's number:");
