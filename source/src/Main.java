@@ -9,7 +9,8 @@ public class Main {
     //2.Balance
     //3.Income
     //4.Expense
-    //5.Debug
+    //5.Exit loop
+    //6.Debug
 
     public static void main(String[] args) {
 
@@ -17,6 +18,8 @@ public class Main {
         boolean loop = true;
         Scanner scanner = new Scanner(System.in);
         String key = "";
+        boolean exit = false;//use for exiting loops of each case
+        String input = "";
 
         //2.Balance
         String details = "----------Balance----------";
@@ -47,41 +50,83 @@ public class Main {
                     System.out.println(details);
                     break;
                 case "2" :
-                    System.out.println("please enter income:");
-                    money = scanner.nextDouble();
-                    //money verify
+                    while(!exit){
+                        System.out.println("please enter income: (enter \"no\" to exit)\")");
+                        input = scanner.next();
+                        if(input.equalsIgnoreCase("no")){
+                            break;
+                        }
 
-                    balance += money;
-                    //put the balance to details
-                    date = new Date();
-                    details +="\nIncome\t" + money + "\t+" + sdf.format(date) + "\t" + balance;
-
-                    break;
-                case "3" :
-                    System.out.println("lease enter expense's note:");
-                    note = scanner.next();
-                    System.out.println("lease enter expense's number:");
-                    money = scanner.nextDouble();
-                    if (money <= balance){
-                        balance -= money;
-                        date = new Date();
-                        details +="\n" + note + ":\t-" + money + "\t" + sdf.format(date) + "\t" + balance;
-                    }else{
-                        System.out.println("Out of balance, you can not make this deal");
-                        System.out.println("lease enter expense's number:");
-                        money = scanner.nextDouble();
+                        try{
+                            money = Double.parseDouble(input);
+                            if(money < 0){
+                                System.out.println("Invalid input. Please enter a valid number.");
+                            }else{
+                                balance += money;
+                                //put the balance to details
+                                date = new Date();
+                                details +="\nIncome\t+" + money + "\t" + sdf.format(date) + "\t" + balance;
+                            }
+                        }catch(NumberFormatException e){
+                            System.out.println("Invalid input. Please enter a valid number.");
+                            continue;
+                        }
                     }
                     break;
-                case "4" :
-                    System.out.println("4 Exit");
-                    loop = false;
+                case "3" :
+                    //loop to continuing ask for enter expenses
+                    while(!exit) {
+                        System.out.println("please enter expense's note: (enter \"no\" to exit)");
+                        note = scanner.next();
+                        if(note.equalsIgnoreCase("no")){
+                            break;
+                        }
+                        while (true) {
+                            System.out.println("please enter expense's number: (enter \"no\" to exit)");
+                            input = scanner.next();
+
+                            if(input.equalsIgnoreCase("no")){
+                                exit = true;
+                                break;
+                            }
+
+                            try{
+                                money = Double.parseDouble(input);
+                                if (money <= balance) {
+                                    balance -= money;
+                                    date = new Date();
+                                    details += "\n" + note + ":\t-" + money + "\t" + sdf.format(date) + "\t" + balance;
+                                    break;
+                                } else {
+                                    System.out.println("Out of balance, you can not make this deal");
+                                }
+                            }catch(NumberFormatException e){
+                                System.out.println("Invalid input. Please enter a valid number.");
+                                continue;
+                            }
+                        }
+                    }
                     break;
+
+                case "4" :
+                    //5.Exit loop
+                    String choice = "";
+                    while(true){
+                        System.out.println("Do you want to exit? y/n");
+                        choice = scanner.next();
+                        //
+                        if("y".equalsIgnoreCase(choice) | "n".equalsIgnoreCase(choice)){
+                            break;
+                        }
+                    }
+                    if(choice.equalsIgnoreCase("y")){
+                        loop = false;
+                    }
+                    break;
+
                 default :
                     System.out.println("Please select from 1-4 ");
             }
-
-
-
         }while(loop);
 
         System.out.println("Exit Loose Change App");
