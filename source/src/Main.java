@@ -32,7 +32,7 @@ public class Main {
         //4.Expense
         String note = "";
 
-
+         //do-while loop for the main menu
         do{
             System.out.println("\n==========Loose Change Menu==========");
             System.out.println("\t\t\t1 Balance");
@@ -76,6 +76,7 @@ public class Main {
                     break;
                 case "3" :
                     //loop to continuing ask for enter expenses
+                    //boolean exit for exit to main menu when enter "no"
                     exit = false;
                     if(balance == 0) {
                         System.out.println("No change to expense");
