@@ -17,6 +17,7 @@ public class looseChangeApp {
     String key = "";
     String input = "";
 
+
     //2.Balance
     String details = "----------Balance----------";
 
@@ -69,8 +70,9 @@ public class looseChangeApp {
     }
 
     public void income(){
-        boolean exit = false;
 
+        boolean exit = false;
+        //boolean exit for exit to main menu when enter "no"
         while(!exit){
             System.out.println("please enter income: (enter \"no\" to exit)\")");
             input = scanner.next();
@@ -97,8 +99,8 @@ public class looseChangeApp {
 
     public void expense(){
         //loop to continuing ask for enter expenses
+        boolean exit = false;
         //boolean exit for exit to main menu when enter "no"
-        exit = false;
         if(balance == 0) {
             System.out.println("No change to expense");
         }else{
@@ -140,16 +142,13 @@ public class looseChangeApp {
     public void exit(){
         //5.Exit loop
         String choice = "";
-        while(true){
+        do {
             System.out.println("Do you want to exit? y/n");
             choice = scanner.next();
-            //
-            if("y".equalsIgnoreCase(choice) | "n".equalsIgnoreCase(choice)){
-                break;
-            }
-        }
+        } while (!"y".equalsIgnoreCase(choice) && !"n".equalsIgnoreCase(choice));
         if(choice.equalsIgnoreCase("y")){
             loop = false;
+
         }
     }
 }
