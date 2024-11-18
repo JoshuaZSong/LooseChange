@@ -2,7 +2,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
-public class looseChangeApp {
+public class LooseChangeApp {
 
     //1.Menu
     //2.Balance
